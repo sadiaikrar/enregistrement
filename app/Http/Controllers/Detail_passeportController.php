@@ -29,7 +29,11 @@ class Detail_passeportController extends Controller
  
 if($insert){
    
-    
+     
+    //dd(session('listeDesClients'));
+    // $data = session()->get('listeDesClients');
+    // dd($data[1]->statut);
+    //   session()->set('statut')
     
      return redirect()->action('CheckController@redirect');
   

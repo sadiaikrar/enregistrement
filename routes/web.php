@@ -50,11 +50,7 @@ Route::get('/enregistrement/informations/bagage',
 'as'=>'/enregistrement/informations/bagage',
 'uses' => 'BagageController@afficherBagage',
 ]);
-Route::post('/enregistrement/informations/bagage',
-[
-'as'=>'/enregistrement/informations/bagage',
-'uses' => 'BagageController@storeBagage',
-]);
+Route::post('/enregistrement/informations/bagage','BagageController@storeBagage',);
 Route::get('/enregistrement/ajouterDesBagages/{num_client},{nom_client},{prenom_client}',
 [
 'as'=>'/enregistrement/ajouterDesBagages',
