@@ -24,6 +24,7 @@ class CheckController extends Controller
             'reference_reservation' => 'required|size:6|alpha_num',
             'nom_client' => 'required|max:20|min:3|alpha',
         ]);
+    
 
 //voir si les donnée existe dans la bdd
         $reservation = Reservation::where([
@@ -37,13 +38,13 @@ class CheckController extends Controller
         ])->get()->first();
 
         if ($reservation !== null && $exist_nom !== null) {
-
+            
 //chercher les billets qui ont tous le méme num_reservation
             $billet = Billet::where([
                 ['num_reservation', '=', $reservation->num_reservation],
 
             ])->get();
-
+            session()->put('billet',$billet);
 //chercher les client qui appartient a la méme reservation
 $listeDesClients =[];
             foreach ($billet as $num_client) {
