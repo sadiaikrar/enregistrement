@@ -16,7 +16,7 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('num_categorie');
             $table->string('nom_categorie');
-            $table->double('prix_categorie');
+            $table->double('remise_categorie');
 
 
             $table->timestamps();

@@ -13,31 +13,42 @@ class CreateVolsTable extends Migration
      */
     public function up()
     {
-        Schema::create('vols', function (Blueprint $table) {
-            $table->bigIncrements('id_vol');
-            $table->string('num_vol',6);
-            $table->dateTime('date_depart');
-            $table->dateTime('date_arriver');
+        Schema::create('vols', function (Blueprint $table) 
+        {
+            $table->bigIncrements('id');
+            $table->string('num_vol',5);
+            $table->date('date_depart');
+            $table->date('date_arriver');
+            $table->time('heure_depart');
+            $table->time('heure_arriver');
             $table->time('duree_vol');
-            $table->string('ville_depart');
-            $table->string('ville_arriver');
-            $table->integer('nombre_place_restante');
-            $table->integer('nombre_place_reserver');
+            $table->unsignedBigInteger('num_ville_depart');
+            $table->unsignedBigInteger('num_ville_arriver');
+            $table->unsignedBigInteger('nombre_place_restante');
             $table->double('prix_vol');
-            $table->bigInteger('num_avion')->unsigned();
-            $table->bigInteger('code_aeroport_depart')->unsigned();
-            $table->bigInteger('code_aeroport_arriver')->unsigned();
-          
+            $table->string('num_avion');
+            $table->string('code_aeroport_depart',3);
+            $table->string('code_aeroport_arriver',3);
+            $table->unsignedBigInteger('num_terminal_depart');
+            $table->unsignedBigInteger('num_terminal_arriver');
+            $table->time('heure_embarquement');
+            $table->string('porte_embarquement');
+            $table->double('prix_bagage_sup');
 
 
-
-            $table->timestamps();
+         
         });
-        Schema::table('vols', function($table) {
+        Schema::table('vols', function($table) 
+        {
             $table->foreign('num_avion')->references('num_avion')->on('avions');
             $table->foreign('code_aeroport_depart')->references('code_aeroport')->on('aeroports');
             $table->foreign('code_aeroport_arriver')->references('code_aeroport')->on('aeroports');
+            $table->foreign('num_ville_depart')->references('code_postal_ville')->on('villes');
+            $table->foreign('num_ville_arriver')->references('code_postal_ville')->on('villes');
+            $table->foreign('num_terminal_depart')->references('id')->on('terminals');
+            $table->foreign('num_terminal_arriver')->references('id')->on('terminals');
         });
+
 
 
 

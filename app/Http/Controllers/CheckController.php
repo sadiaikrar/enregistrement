@@ -6,7 +6,6 @@ use App\Billet;
 use App\Client;
 use App\Reservation;
 use Illuminate\Http\Request;
-use phpDocumentor\Reflection\Types\Boolean;
 
 class CheckController extends Controller
 {
@@ -24,42 +23,40 @@ class CheckController extends Controller
             'reference_reservation' => 'required|size:6|alpha_num',
             'nom_client' => 'required|max:20|min:3|alpha',
         ]);
-    
 
 //voir si les donnée existe dans la bdd
         $reservation = Reservation::where([
             ['reference_reservation', '=', request('reference_reservation')],
 
         ])->get()->first();
-
+        session()->put('reservation', $reservation);
         $exist_nom = Client::where([
             ['nom_client', '=', request('nom_client')],
 
         ])->get()->first();
 
         if ($reservation !== null && $exist_nom !== null) {
-            
+
 //chercher les billets qui ont tous le méme num_reservation
             $billet = Billet::where([
                 ['num_reservation', '=', $reservation->num_reservation],
 
             ])->get();
-            session()->put('billet',$billet);
+
+            session()->put('billet', $billet);
 //chercher les client qui appartient a la méme reservation
-$listeDesClients =[];
+            $listeDesClients = [];
             foreach ($billet as $num_client) {
                 $client = Client::where([
                     ['num_client', '=', $num_client->num_client],
 
                 ])->get();
-             array_push($listeDesClients , $client[0]);
-                 
-         
-                
+                array_push($listeDesClients, $client[0]);
+
             }
             session()->put('listeDesClients', $listeDesClients);
 
-  return view('enregistrement.information', ['listeClient' => $listeDesClients]);
+            return view('enregistrement.information', ['listeClient' => $listeDesClients]);
 
         } else {
             $error = "veuillez vérifier vos informations !!";
@@ -68,17 +65,14 @@ $listeDesClients =[];
 
     }
 
-    public function redirect(){
-        $listeClient=session()->get('listeDesClients');
-        
-         
-            //  echo'enregistrer';
-             return view('/enregistrement.information',['listeClient'=>$listeClient]);
-        
-      
-       
-       
-     }
+    public function redirect()
+    {
+        $listeClient = session()->get('listeDesClients');
+
+        //  echo'enregistrer';
+        return view('/enregistrement.information', ['listeClient' => $listeClient]);
+
+    }
     // public function afficherBagage(){}
 
 }

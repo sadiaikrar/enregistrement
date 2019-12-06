@@ -63,9 +63,5 @@ Route::get('/enregistrement/siège',
 'uses' => 'SiègeController@afficherSiège',
 ]);
 
-Route::get('/enregistrement/ajouterSiège',
-[
-'as'=>'/enregistrement/ajouterSiège',
-'uses' => 'SiègeController@ajouterSiège',
-]);
+
 

@@ -18,7 +18,13 @@
         @foreach ($listeClient as $key )
         {{-- {{dd($listeClient[2]->nationalite_client)}} --}}
         <tr>
-          <td>{{$key->nom_client}} {{$key->prenom_client}}</td> <td>{{$key->statut}}</td> <td> <a href={{route('/enregistrement/detail_passeport',[$key->num_client,$key->nom_client,$key->prenom_client])}}>  
+          <td>{{$key->nom_client}} {{$key->prenom_client}}</td>
+          @if ($key->statut == 1)
+             <td>{{'enregistrer'}}</td> 
+          @else
+             <td>{{'non enregistrer'}}</td> 
+          @endif  
+           <td> <a href={{route('/enregistrement/detail_passeport',[$key->num_client,$key->nom_client,$key->prenom_client])}}>  
         <button style="" type="submit" name="submit"> ajouter détails passeport </button>
    </a> </td>
 

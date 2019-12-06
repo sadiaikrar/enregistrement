@@ -16,17 +16,15 @@ class CreateSiegesTable extends Migration
         Schema::create('sieges', function (Blueprint $table) {
             $table->string('num_siege')->primary();
             $table->boolean('etat_siege');
-            $table->timestamps();
-
-
             $table->bigInteger('num_classe')->unsigned();
+            $table->string('num_avion');
         });
 
 
 
         Schema::table('sieges', function($table) {
             $table->foreign('num_classe')->references('num_classe')->on('classes');
-
+            $table->foreign('num_avion')->references('num_avion')->on('avions');
 
 
     });

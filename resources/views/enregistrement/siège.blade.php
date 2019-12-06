@@ -15,7 +15,7 @@
 
     <h3 >1) Selectionnez un passager</h3>
    
-    
+    {{-- {{dd($m)}} --}}
     <div class="passagers">
        <div class="passager selectione" id="1">
           <b> Passager 1 </b>

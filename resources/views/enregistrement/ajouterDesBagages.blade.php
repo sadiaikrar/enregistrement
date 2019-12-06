@@ -41,9 +41,12 @@ img{
                 <div>Bagage en soute</div>
                 <input id="" name="num_client" type="hidden" value={{$num_client}}>
                 <input type="number" value="0" name="nb_bagage_soute" id="soute">
+                
                 <input id='counter' type="text" name='prix' >
       <input type="submit">
-      
+         @if (isset($error))
+   <h1 style="color: #FF0000; font-size: 2em;"> {{$error}}  </h1>
+@endif
     </form>
 <script>
 counter = document.querySelector('#counter');

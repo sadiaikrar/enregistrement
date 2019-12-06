@@ -19,14 +19,16 @@ class CreateEscalesTable extends Migration
             $table->time('heure_depart_escale');
             $table->time('heure_arriver_escale');
             $table->time('duree_escale');
-            $table->bigInteger('id_vol')->unsigned();
-            $table->timestamps();
+            $table->unsignedBigInteger('id_vol');
+            $table->string('code_aeroport',3)->index();
+            
         });
 
 
 
         Schema::table('escales', function($table) {
-            $table->foreign('id_vol')->references('id_vol')->on('vols');
+            $table->foreign('id_vol')->references('id')->on('vols');
+            $table->foreign('code_aeroport')->references('code_aeroport')->on('aeroports');
     });
 }
 

@@ -14,12 +14,8 @@ class CreateAeroportsTable extends Migration
     public function up()
     {
         Schema::create('aeroports', function (Blueprint $table) {
-            $table->bigIncrements('code_aeroport');
-            $table->time('heure_ouverture_aeroport');
-            $table->time('heure_fermeture_aeroport');
+            $table->string('code_aeroport',3)->primary();
             $table->string('nom_aeroport');
-
-            
             $table->bigInteger('code_postal_ville')->unsigned();
         });
 

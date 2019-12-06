@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClassesTable extends Migration
+class CreateCarteCreditsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateClassesTable extends Migration
      */
     public function up()
     {
-        Schema::create('classes', function (Blueprint $table) {
-            $table->bigIncrements('num_classe');
-            $table->string('nom_classe');
-            $table->double('prix_classe');
-
+        Schema::create('carte_credits', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->dateTime('date_expiration');
+            $table->string('propreitaire_carte');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateClassesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classes');
+        Schema::dropIfExists('carte_credits');
     }
 }

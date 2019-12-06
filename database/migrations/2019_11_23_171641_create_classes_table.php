@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmbarquementsTable extends Migration
+class CreateClassesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateEmbarquementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('embarquements', function (Blueprint $table) 
-        {   $table->bigIncrements('num_embarquement');
-            $table->integer('num_siege');
-            $table->dateTime('date_embarquement');
-        
+        Schema::create('classes', function (Blueprint $table) {
+            $table->bigIncrements('num_classe');
+            $table->string('nom_classe');
+            $table->double('remise_classe');
+
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateEmbarquementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('embarquements');
+        Schema::dropIfExists('classes');
     }
 }

@@ -24,6 +24,7 @@ class CreateClientsTable extends Migration
             $table->date('date_naissance_client');
             $table->integer('code_postal_client');
             $table->string('nationalite_client');
+            $table->date('date_expiration_passeport');
             $table->string('pays_client');
             $table->bigInteger('num_categorie')->unsigned();
             $table->timestamps();

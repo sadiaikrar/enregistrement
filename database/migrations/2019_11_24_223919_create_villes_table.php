@@ -18,6 +18,7 @@ class CreateVillesTable extends Migration
             $table->bigIncrements('code_postal_ville');
             $table->string('nom_ville');
             $table->string('pays_ville');
+           
             
             
 

@@ -13,17 +13,32 @@ class CreateReservationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reservations', function (Blueprint $table) {
+        Schema::create('reservations', function (Blueprint $table)
+
+         {
             $table->bigIncrements('num_reservation');
-            $table->string('reference_reservation',6);
+            $table->string('reference_reservation',8);
             $table->dateTime('date_reservation');
             $table->double('prix_reservation');
+            $table->string('type_reservation');
+            $table->boolean('etat_reservation');
+            $table->unsignedBigInteger('nombre_place_reserver');
+            $table->unsignedBigInteger('num_classe')->index();
 
 
 
 
-            $table->timestamps();
+
         });
+
+
+        Schema::table('reservations', function($table) {
+            $table->foreign('num_classe')->references('num_classe')->on('classes');
+        });  
+
+
+
+
     }
 
     /**

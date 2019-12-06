@@ -29,6 +29,7 @@ class Detail_passeportController extends Controller
 
         if ($insert) {
             
+            
             $billet = session()->get('billet');
             $listeDesClients = [];
            

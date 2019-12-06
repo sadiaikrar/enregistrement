@@ -1,25 +1,34 @@
 <?php
 
+use App\Avion;
 use Illuminate\Database\Seeder;
 
-class avionsTableSeeder extends Seeder
+class AvionsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      *
      * @return void
+     * 
      */
+    
+    
+
+ 
+    // $num_avion= App\Avion->nom_avion[0].App\Avion->capacite_avion;
+   
+    
     public function run()
-    {
-        for ($i=1; $i <10 ; $i++) 
+    {  
+        for ($i=1; $i <9 ; $i++)
         { 
-            # code...
-        
-        DB::table('avions')->insert([
-            'num_avion' => Str::random(5),
-            'nom_avion' =>Str::random(5),
+        DB::table('Avions')->insert([
+            'num_avion'=>'B'.$i.$i.$i,
+            'nom_avion' => "BOING AIRBUS",
             'capacite_avion' =>300,
-            ]);
-        }
-    }
+            'nb_bagage_max'=>$i.$i.$i,
+        ]);
+        }   
+    }   
+    
 }

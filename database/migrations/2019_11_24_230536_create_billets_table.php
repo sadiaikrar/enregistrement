@@ -15,16 +15,17 @@ class CreateBilletsTable extends Migration
     {
         Schema::create('billets', function (Blueprint $table) {
             $table->bigIncrements('num_billet');
-            $table->double('prix_billet');
-
-            $table->bigInteger('num_reservation')->unsigned();
-            $table->timestamps();
+            $table->unsignedBigInteger('num_reservation')->index();
+            $table->unsignedBigInteger('num_client')->index();
             
         });
 
 
 
         Schema::table('billets', function($table) {
+         
+            $table->foreign('num_client')->references('num_client')->on('clients');
+         
             $table->foreign('num_reservation')->references('num_reservation')->on('reservations');
     });
 }
