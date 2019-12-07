@@ -14,17 +14,18 @@ class CreateSiegesTable extends Migration
     public function up()
     {
         Schema::create('sieges', function (Blueprint $table) {
-            $table->string('num_siege')->primary();
+            $table->bigIncrements('id');
+            $table->string('num_siege');
             $table->boolean('etat_siege');
             $table->bigInteger('num_classe')->unsigned();
-            $table->string('num_avion');
+            $table->unsignedBigInteger('id_avion');
         });
 
 
 
         Schema::table('sieges', function($table) {
             $table->foreign('num_classe')->references('num_classe')->on('classes');
-            $table->foreign('num_avion')->references('num_avion')->on('avions');
+            $table->foreign('id_avion')->references('id')->on('avions');
 
 
     });

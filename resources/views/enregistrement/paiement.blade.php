@@ -1,0 +1,27 @@
+
+<h1>prix de bagages en soute pour tout les passagers est: {{$somme}} DA</h1>
+
+
+@foreach($listeBagage as $key)
+@if($key->prix_bagage_soute != 0)
+<h3>numéro de passager: {{$key->num_client}}</h3>
+@foreach($listeEnregistre as $cle)
+@if($cle->num_client == $key->num_client)
+<h3>Nom de passager: {{$cle->nom_client}}</h3>
+<h3>nombres bagages en soute: {{$key->nb_bagage_soute}}</h3>
+<h3>prix bagages en soute: {{$key->prix_bagage_soute}}</h3>
+
+
+<form action="">
+numéro de la carte de paiement :
+<input type="int" name="" placeholder="numéro de la carte ">
+</form>
+@endif
+@endforeach
+@endif
+@endforeach
+
+
+
+
+<a href='/enregistrement/macarte'>carte embarquement</a>

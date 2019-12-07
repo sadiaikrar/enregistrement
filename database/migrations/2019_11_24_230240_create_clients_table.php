@@ -18,15 +18,17 @@ class CreateClientsTable extends Migration
             $table->string('nom_client');
             $table->string('prenom_client');
             $table->string('email_client');
-            $table->string('num_passeport_client');
+            $table->string('num_passeport_client')->nullable();
             $table->string('num_telephone_client');
             $table->string('civilite_client');    
             $table->date('date_naissance_client');
             $table->integer('code_postal_client');
-            $table->string('nationalite_client');
-            $table->date('date_expiration_passeport');
+            $table->string('nationalite_client')->nullable();
+            $table->date('date_expiration_passeport')->nullable();
             $table->string('pays_client');
             $table->bigInteger('num_categorie')->unsigned();
+            $table->boolean('statut')->nullable();
+           
             $table->timestamps();
         });
         

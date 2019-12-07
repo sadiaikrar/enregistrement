@@ -16,13 +16,13 @@ class CreateClasseAvionsTable extends Migration
         Schema::create('classe_avions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('num_classe');
-            $table->string('num_avion')->index();
+            $table->unsignedBigInteger('id_avion')->index();
         });
     
         Schema::table('classe_avions', function($table)
         {
        $table->foreign('num_classe')->references('num_classe')->on('classes');
-       $table->foreign('num_avion')->references('num_avion')->on('avions');
+       $table->foreign('id_avion')->references('id')->on('avions');
 
     });
 

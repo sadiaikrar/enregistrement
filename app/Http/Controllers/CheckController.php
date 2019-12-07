@@ -20,7 +20,7 @@ class CheckController extends Controller
     {
 
         request()->validate([
-            'reference_reservation' => 'required|size:6|alpha_num',
+            'reference_reservation' => 'required|alpha_num',
             'nom_client' => 'required|max:20|min:3|alpha',
         ]);
 

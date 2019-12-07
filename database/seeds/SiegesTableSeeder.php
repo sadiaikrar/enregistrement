@@ -25,7 +25,7 @@ class SiegesTableSeeder extends Seeder
             'num_siege'=>$i.$i.'B',
             'etat_siege' =>true,
             'num_classe' =>$i,
-            'num_avion'=>'B'.$i.$i.$i,
+            'id_avion'=>$i,
             ]);
         }
     }

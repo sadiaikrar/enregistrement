@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Bagage;
+use App\Client;
 use App\Enregistrement;
 use App\Reservation_vol;
 use App\Vol;
@@ -12,9 +13,21 @@ class BagageController extends Controller
 {
     public function afficherBagage()
     {
-
+        $listeEnregistre = [];
         $listeClient = session()->get('listeDesClients');
-        return view('/enregistrement.bagage', ['bagageClient' => $listeClient]);
+        foreach ($listeClient as $key) {
+            if($key->statut == true){
+                $client = Client::where([
+                    ['num_client', '=', $key->num_client],
+
+                ])->get();
+                array_push($listeEnregistre, $client[0]);
+               
+            }
+            
+        }
+        session()->put('listeEnregistre', $listeEnregistre);
+        return view('/enregistrement.bagage', ['bagageClient' => $listeEnregistre]);
     }
 
     public function storeBagage()
@@ -38,8 +51,8 @@ $prix = $nb_bagage_soute*$vol->prix_bagage_sup;
 //insert into table bagage nbr de bagage
         //insert into table enregistrement num table bagage et num client
  
- $bagage= Bagage::insert(['nb_bagage_main'=>1,'nb_bagage_accessoir'=>1,'nb_bagage_soute' => $nb_bagage_soute,'prix_bagage_soute'=> $prix]);
- $num_bagage = Bagage::get('num_bagage')->first();
+ $bagage= Bagage::insert(['num_client'=>$num_client,'nb_bagage_main'=>1,'nb_bagage_accessoir'=>1,'nb_bagage_soute' => $nb_bagage_soute,'prix_bagage_soute'=> $prix]);
+ $num_bagage = Bagage::where('num_client','=',$num_client)->get()->first();
  $datetime = date("Y-m-d H:i:s");
  
  $enregistrement=Enregistrement::insert(['date_enregistrement'=>$datetime,'num_client'=>$num_client,'num_bagage' => $num_bagage->num_bagage,'id_vol'=>$idvol->id]);

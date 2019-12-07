@@ -13,6 +13,7 @@
 
 use App\Http\Controllers\CheckController;
 use App\Http\Controllers\Detail_passeportController;
+
 use Illuminate\Support\Facades\DB;
 
 // fonction anonyme ou collback
@@ -62,6 +63,8 @@ Route::get('/enregistrement/siège',
 'as'=>'/enregistrement/siège',
 'uses' => 'SiègeController@afficherSiège',
 ]);
+Route::get('/enregistrement/carte_embarquement', 'paiementController@payer');
+Route::get('/enregistrement/macarte', 'paiementController@carte');
 
 
 

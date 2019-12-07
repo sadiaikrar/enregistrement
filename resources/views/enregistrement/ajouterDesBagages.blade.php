@@ -53,7 +53,7 @@ counter = document.querySelector('#counter');
 soute = document.querySelector('#soute');
 soute.addEventListener('change' , ()=>{
     nbr = soute.value;
-	counter.value = nbr * 50;
+	counter.value = nbr * 200;
 });
 
 </script>

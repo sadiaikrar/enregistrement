@@ -13,7 +13,7 @@ class Classe_avionsTableSeeder extends Seeder
     {
         DB::table('Classe_avions')->insert([
             'num_classe' => 2,
-            'num_avion' =>'B222',
+            'id_avion' =>2,
            
             ]);
 

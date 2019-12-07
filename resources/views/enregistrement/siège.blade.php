@@ -17,18 +17,19 @@
    
     {{-- $placeRestante
          $capaciteAvion
+         $siegeOccupe
     
      --}}
     <div class="passagers">
        <div class="passager selectione" id="1">
           <b> Passager 1 </b>
-          <p>{{$siègeClient[0]->nom_client}} {{$siègeClient[0]->prenom_client}}</p>
+          <p>{{$listeClient[0]->nom_client}} {{$listeClient[0]->prenom_client}}</p>
        </div>
        
- @for($i=1; $i< count($siègeClient); ++$i)
+ @for($i=1; $i< count($listeClient); ++$i)
        <div class="passager" id={{$i+1}}>
            <b> Passager {{$i+1}} </b>
-           <p>{{$siègeClient[$i]->nom_client}} {{$siègeClient[$i]->prenom_client}}</p>
+           <p>{{$listeClient[$i]->nom_client}} {{$listeClient[$i]->prenom_client}}</p>
         </div>
 @endfor
        
@@ -36,21 +37,24 @@
 
     <h3 >2) Selectionnez la nouvelle place</h3>
     <div class="places">
-{{-- @for($i=1;$i<=20;$i++)
-@if($i%2 == 0)
-<div class="place"><input readonly  class="occupe" type="text" value={{$i}} ><span></span></div>
-            
-           
-@else  
-{{-- @for($j=1; $j<= count($siègeClient); ++$j)  --}}
- 
-  {{-- <div class="place"><input readonly  class="selectione" type="text" name="passager_{{$j}}" value={{$i}}><span>Passager {{$j}}</span></div>       --}}
-           
-         {{-- <div class="place"><input readonly  type="text" value={{$i}} ><span></span></div>   --}}
-            {{-- @endfor  --}}
+@for($i=1;$i<=$capaciteAvion;$i++)
+    @foreach ($siegeOccupe as $key )
+    @if($key->num_siege == $i)
+        <div class="place"><input readonly  class="occupe"  type="text" value={{$i}} ><span></span></div>
+    @endif
+    @endforeach
+    @if($i<count($listeClient))
+    @foreach ($listeClient as $client )
+       <div class="place"><input readonly  class="selectione" type="text" name="passager_{{$i}}" value={{$i}}><span>passager {{$i}}</span></div> 
+    @endforeach
+    @endif
+    <div class="place"><input readonly  type="text" value={{$i}} ><span></span></div>
+@endfor
+    
+
 
             
-  
+{{--   
             <div class="place"><input readonly  type="text" value="1" ><span></span></div>
             <div class="place"><input readonly  type="text" value="2" ><span></span></div>
             <div class="place"><input readonly  type="text" value="3" ><span></span></div>
@@ -70,10 +74,12 @@
             <div class="place"><input readonly  type="text" value="17" ><span></span></div>
             <div class="place"><input readonly  type="text" value="18" ><span></span></div>
             <div class="place"><input readonly  type="text" value="19" ><span></span></div>
-    
+     --}}
 
     </div>
+    <a href='/enregistrement/carte_embarquement'>carte embarquement</a>
 <input type="submit" value="Valider">
+
 </form>
 </body>
 
