@@ -13,8 +13,12 @@
 
 
 <form action="">
+@csrf
 numéro de la carte de paiement :
-<input type="int" name="" placeholder="numéro de la carte ">
+<input type="text" name="nom_carte" placeholder="nom de la carte "><br>
+<input type="int" name="num_carte" placeholder="numéro de la carte "><br>
+<input type="date" name="experation" placeholder="date d'expération "><br>
+<input type="submit" name="submit" value="valider">
 </form>
 @endif
 @endforeach
