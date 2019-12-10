@@ -11,7 +11,7 @@
 <h3>nombres bagages en soute: {{$key->nb_bagage_soute}}</h3>
 <h3>prix bagages en soute: {{$key->prix_bagage_soute}}</h3>
 
-
+{{-- formaulaire de paiement  --}}
 <form action="">
 @csrf
 numéro de la carte de paiement :
