@@ -21,6 +21,7 @@ class CreateBagagesTable extends Migration
             $table->integer('nb_bagage_soute');
             $table->double('prix_bagage_soute');
             $table->unsignedBigInteger('num_client');
+            // $table->unsignedBigInteger('num_enregistrement'); 
           
         });
          
@@ -28,6 +29,9 @@ class CreateBagagesTable extends Migration
        
         Schema::table('bagages', function($table) {
             $table->foreign('num_client')->references('num_client')->on('clients');
+            // $table->foreign('num_enregistrement')->references('num_enregistrement')->on('enregistrements'); 
+            
+
         });
         
 

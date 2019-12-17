@@ -39,17 +39,24 @@
     <div class="places">
 @for($i=1;$i<=$capaciteAvion;$i++)
     @foreach ($siegeOccupe as $key )
-    @if($key->num_siege == $i)
+      @if($key->num_siege == $i)
         <div class="place"><input readonly  class="occupe"  type="text" value={{$i}} ><span></span></div>
-    @endif
+      @endif
     @endforeach
-    @if($i<count($listeClient))
+      @foreach ($siegelibre as $key )
+         @if($key->num_siege == $i)
+         
+        <div class="place"><input readonly  type="text" value={{$i}} ><span></span></div>
+          
+         @endif
+      @endforeach
+    {{-- @if($i<count($listeClient))
     @foreach ($listeClient as $client )
        <div class="place"><input readonly  class="selectione" type="text" name="passager_{{$i}}" value={{$i}}><span>passager {{$i}}</span></div> 
     @endforeach
-    @endif
-    <div class="place"><input readonly  type="text" value={{$i}} ><span></span></div>
-@endfor
+    @endif --}}
+    
+ @endfor
     
 
 

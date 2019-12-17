@@ -17,10 +17,11 @@ class PaiementController extends Controller
             $bagage=Bagage::where('num_client','=',$key->num_client)->get();
             $prixBagage=Bagage::where('num_client','=',$key->num_client)->get()->first();
              $prix=$prixBagage->prix_bagage_soute;
+             
              $somme=$somme+$prix;
              array_push($listeBagage, $bagage[0]);
             }
-              
+             
             session()->put('listeBagage', $listeBagage); 
             
         if($somme == 0){    

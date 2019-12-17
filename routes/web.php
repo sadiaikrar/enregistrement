@@ -24,13 +24,13 @@ Route::get('/', function () {
 
 Route::get('/enregistrement', 'CheckController@check');
 // Route::view('enregistrement','check');
-Route::post('/enregistrement/information', 'CheckController@store');
+Route::post('/enregistrement', 'CheckController@store');
 
 Route::get('/enregistrement/information',
 
 [
 'as'=>'/enregistrement/information',
-'uses' => 'CheckController@redirect',
+'uses' => 'CheckController@retour',
 ]);
 
 Route::get('/enregistrement/{num_client},{nom_client},{prenom_client}/detail_passeport',

@@ -24,6 +24,8 @@ class BagagesTableSeeder extends Seeder
             'nb_bagage_accessoir'=>1,
             'prix_bagage_soute'=>40,
             'num_client'=>$i,
+            // 
+            
             
             
             ]);

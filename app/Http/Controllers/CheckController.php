@@ -22,6 +22,13 @@ class CheckController extends Controller
         request()->validate([
             'reference_reservation' => 'required|alpha_num',
             'nom_client' => 'required|max:20|min:3|alpha',
+        ],[
+            'reference_reservation.required' =>'Veuillez saisir votre référence de réservation',
+            'reference_reservation.alpha_num' =>'Veuillez vérifier votre code ex: NRDDZ9',
+            'nom_client.required' =>'Veuillez saisir votre nom ',
+            'nom_client.alpha' =>'Vérifier votre nom. ',
+            'nom_client.max' =>'Votre nom doit contenir au plus :max caractères. ', 
+            'nom_client.min' =>'Votre nom doit contenir au moins :min caractères. ',
         ]);
 
 //voir si les donnée existe dans la bdd
@@ -65,7 +72,7 @@ class CheckController extends Controller
 
     }
 
-    public function redirect()
+    public function retour()
     {
         $listeClient = session()->get('listeDesClients');
 

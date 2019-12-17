@@ -17,6 +17,7 @@ class TerminalsTableSeeder extends Seeder
         DB::table('Terminals')->insert([
             "id" =>$i ,
             "nom_terminal" => "t".$i,
+            'code_aeroport'=>"ALG",
            
         ]);
         }

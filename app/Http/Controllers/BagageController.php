@@ -12,7 +12,13 @@ use App\Vol;
 class BagageController extends Controller
 {
     public function afficherBagage()
-    {
+    { $reservation = session()->get('reservation');
+        $idvol=Reservation_vol::where('num_reservation','=',$reservation->num_reservation)->get()->first();
+      //recupere le prix des vols 
+        $vol=Vol::where('id','=',$idvol->id)->get()->first();
+        session()->put('vol', $vol);
+        
+        $client_exist=[];
         $listeEnregistre = [];
         $listeClient = session()->get('listeDesClients');
         foreach ($listeClient as $key) {
@@ -22,12 +28,30 @@ class BagageController extends Controller
 
                 ])->get();
                 array_push($listeEnregistre, $client[0]);
+                array_push($client_exist, $key->num_client);
                
             }
             
         }
+        session()->put('client_exist', $client_exist);
+        
+
+        $bagage1=Bagage::all();
         session()->put('listeEnregistre', $listeEnregistre);
-        return view('/enregistrement.bagage', ['bagageClient' => $listeEnregistre]);
+        $bagage_exist=[];
+        foreach ($bagage1 as $ligne){
+            array_push($bagage_exist, $ligne->num_client);
+
+        }
+        session()->put('bagage_exist', $bagage_exist);
+       
+
+                   
+                       
+         
+
+        return view('/enregistrement.bagage', ['listeEnregistre' => $listeEnregistre,'bagage_exist'=>$bagage_exist,'client_exist'=>$client_exist]);
+
     }
 
     public function storeBagage()
@@ -57,10 +81,20 @@ $prix = $nb_bagage_soute*$vol->prix_bagage_sup;
  
  $enregistrement=Enregistrement::insert(['date_enregistrement'=>$datetime,'num_client'=>$num_client,'num_bagage' => $num_bagage->num_bagage,'id_vol'=>$idvol->id]);
 
-     
+
+ $bagage1=Bagage::all();
  
- $listeClient = session()->get('listeDesClients');
-        return view('/enregistrement/bagage', ['bagageClient' => $listeClient]);
+ $exist=[];
+ foreach ($bagage1 as $ligne){
+     array_push($exist, $ligne->num_client);
+
+ }
+ session()->put('bagage_exist', $exist);
+
+ $client_exist = session()->get('client_exist');    
+ $bagage_exist = session()->get('bagage_exist');
+ $listeEnregistre = session()->get('listeEnregistre');
+        return view('/enregistrement/bagage', ['listeEnregistre' => $listeEnregistre,'bagage_exist'=>$exist,'client_exist'=>$client_exist]);
         }else{
             $error = "veuillez vérifier vos informations !!";
             return back()->with( ['error' => $error]);

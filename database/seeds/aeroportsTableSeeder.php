@@ -14,7 +14,7 @@ class AeroportsTableSeeder extends Seeder
     {
         DB::table('Aeroports')->insert([
         "code_aeroport" => "ALG",
-        "nom_aeroport" => "HOUARI BOUMEDIENE AIRPORT",
+        "nom_aeroport" => "HOUARI BOUMEDIENE",
         "code_postal_ville" => 1,
         ]);
 

@@ -21,7 +21,7 @@ class CreateReservationsTable extends Migration
             $table->dateTime('date_reservation');
             $table->double('prix_reservation');
             $table->string('type_reservation');
-            $table->boolean('etat_reservation');
+            $table->boolean('etat_reservation')->nullable();
             $table->unsignedBigInteger('nombre_place_reserver');
             $table->unsignedBigInteger('num_classe')->index();
 

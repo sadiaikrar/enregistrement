@@ -28,6 +28,8 @@ class CreateClientsTable extends Migration
             $table->string('pays_client');
             $table->bigInteger('num_categorie')->unsigned();
             $table->boolean('statut')->nullable();
+            $table->string('login')->nullable();
+            $table->string('mot_de_passe')->nullable();
            
             $table->timestamps();
         });

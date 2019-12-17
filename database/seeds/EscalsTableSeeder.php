@@ -18,7 +18,9 @@ class EscalsTableSeeder extends Seeder
         'heure_arriver_escale'=>"09:00:00",
         'duree_escale'=>"01:00:00",
         'id_vol'=>'3',
-        'code_aeroport'=>"ALG",
+        'code_aeroport_depart'=>"ALG",
+        'code_aeroport_arriver'=>"CDG",
+
         ]);
 
     }

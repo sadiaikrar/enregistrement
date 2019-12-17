@@ -22,6 +22,15 @@ class Detail_passeportController extends Controller
             'numero_passeport' => 'required|numeric',
             'confirmer_numero_passeport' => 'required|numeric|same:numero_passeport',
             'date_expiration_passeport' => 'required|date|after_or_equal:today',
+        ],[
+            'nationalite.required' => 'veuillez saisir votre nationalité .',
+            'numero_passeport.required' => 'veuillez saisir votre numéro de passeport .',
+            // 'numero_passeport.numeric' => 'Votre numéro de passeport ne doit contenir que des chiffres .', 
+            'numero_passeport.size' => 'Votre numéro de passeport doit contenir :size chiffres .',
+            'confirmer_numero_passeport.required' => 'Veuillez confirmer votre numéro de passeport .',
+            'confirmer_numero_passeport.same' => 'Votre numéro de passeport ne correspond pas .',
+            'date_expiration_passeport.required' => "Veuillez saisir la date d'expération de votre passeport  .",
+            'date_expiration_passeport.after_or_equal' => "Votre passeport à une date expérée, veuillez vérifier SVP! ",
         ]);
 
         //ajouter les informations du client
@@ -43,7 +52,7 @@ class Detail_passeportController extends Controller
             }
             session()->put('listeDesClients', $listeDesClients);
             
-            return redirect()->action('CheckController@redirect');
+            return redirect()->action('CheckController@retour');
 
         } else {
             $error = "veuillez vérifier vos informations !!";

@@ -3,5 +3,6 @@
 <h1> référence de reservation: {{$reservation->reference_reservation}}</h1>
 @foreach($listeEnregistre as $key)
 <h1>passager: {{$key->nom_client}} {{$key->prenom_client}}</h1>
+<a><input type="submit" name="submit" value="télécharger la carte d'embarquement"></a>
 
 @endforeach

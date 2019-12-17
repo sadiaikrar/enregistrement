@@ -18,6 +18,7 @@ class CreateReservationClientsTable extends Migration
             $table->unsignedBigInteger('num_reservation')->index();
 
             $table->unsignedBigInteger('num_client')->index();
+            $table->boolean('type_client')->nullable();
 
 
         });

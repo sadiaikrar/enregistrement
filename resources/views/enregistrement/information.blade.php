@@ -1,54 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-
-</head>
-<body>
-   <h2>Informations</h2>
-    <table>
-        <tr>
-          <th>Passager</th> <th>Statut</th> <th>Action</th>
-
-        </tr>
-        {{-- {{session()->get('client')}} --}}
-        @foreach ($listeClient as $key )
-        {{-- {{dd($listeClient[2]->nationalite_client)}} --}}
-        <tr>
-          <td>{{$key->nom_client}} {{$key->prenom_client}}</td>
-          @if ($key->statut == 1)
-             <td>{{'enregistrer'}}</td> 
-          @else
-             <td>{{'non enregistrer'}}</td> 
-          @endif  
-           <td> <a href={{route('/enregistrement/detail_passeport',[$key->num_client,$key->nom_client,$key->prenom_client])}}>  
-        <button style="" type="submit" name="submit"> ajouter détails passeport </button>
-   </a> </td>
-
-        </tr>
-        @endforeach
-        
-
-    </table>
-   <a href='/enregistrement'> <input type="button" value="Retour"></a>
-
-
-    <a  href={{route('/enregistrement/informations/bagage')}}>  
-        <button style="" type="submit" name="submit"> Continuer </button>
-   </a>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
     
+    <link rel="stylesheet" href="{{ asset('reservation.css')}}">
+<body>
+    <div class="entete__cadre">  
+        <div class="entete">
+            <p>Enregistrement</P>
+                
+        </div>
+    </div>
+
+    <div class="container_enregistrement">
+            <div class="enregistrement_gauche">
+              <div class="enregistrmrnt__tete">
+                
+    
+                <div class="enregistrement__etat">
+                    <div class="enregistrement__cercle enregistrement__cercle--actif">1</div>
+                    <div class="enregistrement__ligne"></div>
+                    <div class="enregistrement__cercle">2</div>
+                    <div class="enregistrement__ligne"></div>
+                    <div class="enregistrement__cercle">3</div>
+
+
+                </div>
+
+                <div class="enregistrement__titre">
+                    <p>Informations sur les passagers </p>
+                </div>
+         
+                <div class="enregistrement__details">
+                    <p>Veuillez ajouter les informations des passeport...</p>
+                </div>
+                
+            </div>
+                <div class="enregistrement__tableau">
+                    <div class="tableau__titres">
+                        <div class="tableau__titre">Passager</div>
+                        <div class="tableau__titre">Statut</div>
+                        <div class="tableau__titre">Action</div>
+                    </div>
+                    @foreach ($listeClient as $key )
+                    @if ($key->statut == 0)
+                    <div class="tableau__ligne ">
+                        <div class="tableau__element">{{$key->nom_client}} {{$key->prenom_client}}</div>
+                        <div class="tableau__element">{{'Manque des details de passeport'}}</div>
+                        <div class="tableau__element "><a href={{route('/enregistrement/detail_passeport',[$key->num_client,$key->nom_client,$key->prenom_client])}} class="tableau__button">Ajouter</a></div>
+                    </div>
+                    @else
+                    <div class="tableau__ligne tableau__ligne--pair">
+                        <div class="tableau__element">{{$key->nom_client}} {{$key->prenom_client}}</div>
+                        <div class="tableau__element">{{'Pret'}}</div>
+                        <div class="tableau__element "></div>
+                    </div>
+                    @endif 
+                    @endforeach
+
+                    <div class="enregistrement__btns">
+                      <a href='/enregistrement'>  <input type="button" class="" value="Retour"> </a>
+                      
+                     @if ($listeClient[0]->statut == 1)
+                      <a href={{route('/enregistrement/informations/bagage')}}>  <input type="button" class="" value="Suivant"> </a>
+                 @endif
+                    </div>
+
+                </div>
+
+                
+
+            </div>
+
+            <div class="enregistrement_droite">
+
+           
+                
+            </div>
+
+
+    </div>
+
+
+
+
 </body>
-
-<style>
-    table{
-        width: 600px;
-    }
-    tr,th,td{
-     border:1px solid black;
-    }
-
-</style>
-</html>

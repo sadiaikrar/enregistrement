@@ -19,6 +19,7 @@ class CreateSiegesTable extends Migration
             $table->boolean('etat_siege');
             $table->bigInteger('num_classe')->unsigned();
             $table->unsignedBigInteger('id_avion');
+            // $table->unsignedBigInteger('num_enregistrement'); 
         });
 
 
@@ -26,6 +27,7 @@ class CreateSiegesTable extends Migration
         Schema::table('sieges', function($table) {
             $table->foreign('num_classe')->references('num_classe')->on('classes');
             $table->foreign('id_avion')->references('id')->on('avions');
+            // $table->foreign('num_enregistrement')->references('num_enregistrement')->on('enregistrements');
 
 
     });

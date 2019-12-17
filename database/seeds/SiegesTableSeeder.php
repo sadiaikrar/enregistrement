@@ -26,6 +26,7 @@ class SiegesTableSeeder extends Seeder
             'etat_siege' =>true,
             'num_classe' =>$i,
             'id_avion'=>$i,
+            // 'num_enregistrement'=>2,
             ]);
         }
     }

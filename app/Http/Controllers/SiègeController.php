@@ -28,6 +28,7 @@ $capaciteAvion=$avion->capacite_avion;
 
 $placeRestante=$vol->nombre_place_restante;
 $siegeOccupe=Siege::where(['etat_siege'=>1,'id_avion'=>$id_avion,'num_classe'=>$num_classe])->get();
+$siegelibre=Siege::where(['etat_siege'=>0,'id_avion'=>$id_avion,'num_classe'=>$num_classe])->get();
 //  dd($siegeOccupe);
 
 //si un bébé ne prend pas de siège 
@@ -43,16 +44,16 @@ $siegeOccupe=Siege::where(['etat_siege'=>1,'id_avion'=>$id_avion,'num_classe'=>$
 
 if($num_classe == 2){
     $capaciteAvion=$capaciteAvion/9;
-    return view('/enregistrement.siège', ['listeClient' => $listeEnregistre,'capaciteAvion'=>$capaciteAvion,'placeRestante'=>$placeRestante,'siegeOccupe'=>$siegeOccupe]);
+    return view('/enregistrement.siège', ['listeClient' => $listeEnregistre,'capaciteAvion'=>$capaciteAvion,'placeRestante'=>$placeRestante,'siegeOccupe'=>$siegeOccupe,'siegelibre'=>$siegelibre]);
 }
 if($num_classe == 3){
     $capaciteAvion=($capaciteAvion*2)/9;
-    return view('/enregistrement.siège', ['listeClient' => $listeEnregistre,'capaciteAvion'=>$capaciteAvion,'placeRestante'=>$placeRestante,'siegeOccupe'=>$siegeOccupe]);
+    return view('/enregistrement.siège', ['listeClient' => $listeEnregistre,'capaciteAvion'=>$capaciteAvion,'placeRestante'=>$placeRestante,'siegeOccupe'=>$siegeOccupe,'siegelibre'=>$siegelibre]);
 }
 if($num_classe == 1){
     $capaciteAvion=($capaciteAvion*2)/3;
 
-    return view('/enregistrement.siège', ['listeClient' => $listeEnregistre,'capaciteAvion'=>$capaciteAvion,'placeRestante'=>$placeRestante,'siegeOccupe'=>$siegeOccupe]);
+    return view('/enregistrement.siège', ['listeClient' => $listeEnregistre,'capaciteAvion'=>$capaciteAvion,'placeRestante'=>$placeRestante,'siegeOccupe'=>$siegeOccupe,'siegelibre'=>$siegelibre]);
 
 }
 
