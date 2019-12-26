@@ -17,13 +17,33 @@ class EnregistrementsTableSeeder extends Seeder
         // {
         DB::table('enregistrements')->insert([
             'num_enregistrement'=>2,
-            'num_client' =>2,
+            'num_client' =>3,
             'date_enregistrement' => now(),
-            'id_siege' =>1,
+            // 'id_siege' =>1,
             'id_vol'=>2,
-            'num_bagage'=>2,
+       
             'num_paiement'=>1,
             ]);  
+
+            DB::table('enregistrements')->insert([
+                'num_enregistrement'=>3,
+                'num_client' =>1,
+                'date_enregistrement' => now(),
+                // 'id_siege' =>1,
+                'id_vol'=>2,
+           
+                'num_paiement'=>1,
+                ]);  
+
+                DB::table('enregistrements')->insert([
+                    'num_enregistrement'=>4,
+                    'num_client' =>2,
+                    'date_enregistrement' => now(),
+                    // 'id_siege' =>1,
+                    'id_vol'=>2,
+               
+                    'num_paiement'=>1,
+                    ]);  
 
 
 

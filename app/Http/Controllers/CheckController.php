@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Billet;
 use App\Client;
+use App\Enregistrement;
 use App\Reservation;
+use App\Reservation_vol;
 use Illuminate\Http\Request;
 
 class CheckController extends Controller
@@ -52,7 +54,12 @@ class CheckController extends Controller
 
             session()->put('billet', $billet);
 //chercher les client qui appartient a la méme reservation
+$idvol=Reservation_vol::where('num_reservation','=',$reservation->num_reservation)->get()->first();
+session()->put('idVol', $idvol);         
             $listeDesClients = [];
+            $nb=false;
+            $datetime = date("Y-m-d H:i:s");
+           
             foreach ($billet as $num_client) {
                 $client = Client::where([
                     ['num_client', '=', $num_client->num_client],
@@ -60,8 +67,25 @@ class CheckController extends Controller
                 ])->get();
                 array_push($listeDesClients, $client[0]);
 
+                $enregistrement=Enregistrement::where([
+                    'num_client'=>$num_client->num_client,
+                    'id_vol'=>$idvol->id_vol,
+                    'statut'=>1,
+                ])->get()->first();
+                if($enregistrement != null){
+                    $error = "vous étes déja enregistrer !";
+                   return view('enregistrement.check', ['error' => $error]);
+                }else{
+                   
+                 
+                        $enregistrement=Enregistrement::insert(['date_enregistrement'=>$datetime,'num_client'=>$num_client->num_client,'id_vol'=>$idvol->id_vol]);
+                      
+                    }
+              
             }
+ 
             session()->put('listeDesClients', $listeDesClients);
+            
 
             return view('enregistrement.information', ['listeClient' => $listeDesClients]);
 
@@ -72,14 +96,15 @@ class CheckController extends Controller
 
     }
 
+
+
+    
     public function retour()
     {
         $listeClient = session()->get('listeDesClients');
 
-        //  echo'enregistrer';
         return view('/enregistrement.information', ['listeClient' => $listeClient]);
 
     }
-    // public function afficherBagage(){}
 
 }

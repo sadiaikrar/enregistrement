@@ -56,7 +56,7 @@
                         </div>
 
                     </form>
-
+<a href="{{route('/enregistrement/supprimer_Enregistrement')}}">Annuler un enregistrement</a>
 
             </div>
 

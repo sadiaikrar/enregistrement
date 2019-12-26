@@ -16,7 +16,7 @@ class CreateSiegesTable extends Migration
         Schema::create('sieges', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('num_siege');
-            $table->boolean('etat_siege');
+            // $table->boolean('etat_siege');
             $table->bigInteger('num_classe')->unsigned();
             $table->unsignedBigInteger('id_avion');
             // $table->unsignedBigInteger('num_enregistrement'); 

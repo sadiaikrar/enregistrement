@@ -20,17 +20,17 @@ class CreateEnregistrementsTable extends Migration
             $table->unsignedBigInteger('num_client')->index();
             $table->unsignedBigInteger('id_vol')->nullable();
 
-            $table->unsignedBigInteger('id_siege')->nullable();
-            $table->unsignedBigInteger('num_bagage')->index();
+           // $table->unsignedBigInteger('id_siege')->nullable();
+           
             $table->unsignedBigInteger('num_paiement')->nullable();
-
+            $table->boolean('statut')->nullable();
             $table->timestamps();
         });
         Schema::table('enregistrements', function($table) {
           $table->foreign('id_vol')->references('id')->on('vols');
-          $table->foreign('num_bagage')->references('num_bagage')->on('bagages');
+        
           $table->foreign('num_client')->references('num_client')->on('clients');
-          $table->foreign('id_siege')->references('id')->on('sieges');
+         // $table->foreign('id_siege')->references('id')->on('sieges');
           $table->foreign('num_paiement')->references('id')->on('paiements');
     });
 

@@ -14,7 +14,7 @@ class BagagesTableSeeder extends Seeder
 
 
         $faker = Faker\Factory::create();
-        for ($i=2; $i <5 ; $i++) 
+        for ($i=2; $i <3 ; $i++) 
         {
         DB::table('Bagages')->insert([
     
@@ -23,8 +23,8 @@ class BagagesTableSeeder extends Seeder
             'nb_bagage_main' =>1,
             'nb_bagage_accessoir'=>1,
             'prix_bagage_soute'=>40,
-            'num_client'=>$i,
-            // 
+            'num_enregistrement'=>$i,
+             
             
             
             

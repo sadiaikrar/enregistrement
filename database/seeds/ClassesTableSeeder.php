@@ -17,17 +17,18 @@ class ClassesTableSeeder extends Seeder
             'remise_classe' =>1,
             ]);
 
-            DB::table('Classes')->insert([
-                'num_classe' => 2,
-                'nom_classe' => 'premiere',
-                'remise_classe' =>2,
-                ]);
+            
                 DB::table('Classes')->insert([
-                    'num_classe' => 3,
+                    'num_classe' => 2,
                     'nom_classe' => 'affaire',
-                    'remise_classe' =>1.5,
+                    'remise_classe' =>2,
                     ]);
-
+                    
+                DB::table('Classes')->insert([
+                        'num_classe' => 3,
+                        'nom_classe' => 'premiere',
+                        'remise_classe' =>1.5,
+                        ]);
 
 
 

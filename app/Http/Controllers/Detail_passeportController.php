@@ -10,9 +10,9 @@ class Detail_passeportController extends Controller
 
     public function afficherClient(int $num_client, string $nom_client, string $prenom_client)
     {
-        $requete = Client::where('num_client', $num_client)->get('date_naissance_client')->first();
-        $dateNaissance = $requete->date_naissance_client;
-        return view('/enregistrement.detail_passeport', ['num_client' => $num_client, 'nom_client' => $nom_client, 'prenom_client' => $prenom_client, 'dateNaissance' => $dateNaissance]);
+        // $requete = Client::where('num_client', $num_client)->get('date_naissance_client')->first();
+        // $dateNaissance = $requete->date_naissance_client;
+        return view('/enregistrement.detail_passeport', ['num_client' => $num_client, 'nom_client' => $nom_client, 'prenom_client' => $prenom_client]);
     }
 
     public function insertToClient(int $num_client, string $nom_client, string $prenom_client)

@@ -13,7 +13,8 @@ class CreateTerminalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('terminals', function (Blueprint $table) {
+        Schema::create('terminals', function (Blueprint $table) 
+        {
             $table->bigIncrements('id');
             $table->string('nom_terminal');
             $table->string('code_aeroport',3);

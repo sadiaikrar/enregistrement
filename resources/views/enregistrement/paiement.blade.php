@@ -10,20 +10,20 @@ carte de paiement :
 <input type="submit" name="submit" value="valider">
 </form>
 
-@foreach($listeBagage as $key)
+{{-- @foreach($listeBagage as $key)
 @if($key->prix_bagage_soute != 0)
 <h3>numéro de passager: {{$key->num_client}}</h3>
 @foreach($listeEnregistre as $cle)
 @if($cle->num_client == $key->num_client)
 <h3>Nom de passager: {{$cle->nom_client}}</h3>
 <h3>nombres bagages en soute: {{$key->nb_bagage_soute}}</h3>
-<h3>prix bagages en soute: {{$key->prix_bagage_soute}}</h3>
+<h3>prix bagages en soute: {{$key->prix_bagage_soute}}</h3> --}}
 
-
+{{-- 
 @endif
 @endforeach
 @endif
-@endforeach
+@endforeach --}}
 
 
 

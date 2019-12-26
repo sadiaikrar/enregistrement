@@ -26,7 +26,7 @@ class CreateVolsTable extends Migration
             $table->string('ville_depart');
             $table->unsignedBigInteger('num_ville_arriver');
             $table->string('ville_arriver');
-            $table->unsignedBigInteger('nombre_place_restante');
+            $table->unsignedBigInteger('nombre_place_restante')->nullable();
             $table->double('prix_vol');
             $table->unsignedBigInteger('id_avion');
             $table->string('code_aeroport_depart',3);
@@ -47,8 +47,8 @@ class CreateVolsTable extends Migration
             $table->foreign('id_avion')->references('id')->on('avions');
             $table->foreign('code_aeroport_depart')->references('code_aeroport')->on('aeroports');
             $table->foreign('code_aeroport_arriver')->references('code_aeroport')->on('aeroports');
-            $table->foreign('num_ville_depart')->references('code_postal_ville')->on('villes');
-            $table->foreign('num_ville_arriver')->references('code_postal_ville')->on('villes');
+            $table->foreign('num_ville_depart')->references('id_ville')->on('villes');
+            $table->foreign('num_ville_arriver')->references('id_ville')->on('villes');
             $table->foreign('num_terminal_depart')->references('id')->on('terminals');
             $table->foreign('num_terminal_arriver')->references('id')->on('terminals');
         });

@@ -15,7 +15,8 @@ class CreateVillesTable extends Migration
     {
         Schema::create('villes', function (Blueprint $table)
          {
-            $table->bigIncrements('code_postal_ville');
+            $table->bigIncrements('id_ville');
+            // $table->bigIncrements('code_postal_ville');
             $table->string('nom_ville');
             $table->string('pays_ville');
            

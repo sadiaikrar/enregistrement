@@ -18,12 +18,14 @@ class DatabaseSeeder extends Seeder
         $this->call(AvionsTableSeeder::class);
         $this->call(ClassesTableSeeder::class);
         $this->call(SiegesTableSeeder::class);
-        $this->call(BagagesTableSeeder::class);
+    
         $this->call(TerminalsTableSeeder::class);
         $this->call(VolsTableSeeder::class);
         $this->call(Carte_creditsTableSeeder::class);
         $this->call(PaiementsTableSeeder::class);
         $this->call(EnregistrementsTableSeeder::class); 
+        $this->call(BagagesTableSeeder::class);
+      
         $this->call(ReservationsTableSeeder::class);
         $this->call(Reservation_clientsTableSeeder::class);
         $this->call(Reservation_volsTableSeeder::class);
@@ -32,7 +34,7 @@ class DatabaseSeeder extends Seeder
         $this->call(Personnel_volsTableSeeder::class);
         $this->call(EscalsTableSeeder::class);
         $this->call(Classe_avionsTableSeeder::class);
-
+        $this->call(Enregistrement_siegeTableSeeder::class);
   
     }
 }

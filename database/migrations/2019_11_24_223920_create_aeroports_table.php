@@ -16,12 +16,12 @@ class CreateAeroportsTable extends Migration
         Schema::create('aeroports', function (Blueprint $table) {
             $table->string('code_aeroport',3)->primary();
             $table->string('nom_aeroport');
-            $table->bigInteger('code_postal_ville')->unsigned();
+            $table->bigInteger('id_ville')->unsigned();
         });
 
 
         Schema::table('aeroports', function($table) {
-            $table->foreign('code_postal_ville')->references('code_postal_ville')->on('villes');
+            $table->foreign('id_ville')->references('id_ville')->on('villes');
         });
     }
 

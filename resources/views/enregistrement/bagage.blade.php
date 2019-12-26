@@ -35,7 +35,7 @@
                 </div>
          
                 <div class="enregistrement__details">
-                    <p>Veuillez confirmer...</p>
+                    <p>Veuillez valider les bagage pour passer a l'étape suivante...</p>
                 </div>
                 
             </div>
@@ -53,30 +53,24 @@
 
                     @foreach ($listeEnregistre as $key )
                    
-                   @if(in_array ( $key->num_client, $bagage_exist ) )
-<div class="tableau__ligne tableau__ligne--pair">
-                        <div class="tableau__element">{{$key->nom_client}} {{$key->prenom_client}}</div>
-                        <div class="tableau__element">1 bagage a main, 1 accessoire	</div>
-                        <div class="tableau__element "></div>
-                    </div>
-                   @else
+ 
  <div class="tableau__ligne ">
                         <div class="tableau__element">{{$key->nom_client}} {{$key->prenom_client}}</div>
                         <div class="tableau__element">1 bagage a main, 1 accessoire	</div>
                         <div class="tableau__element "><a href="{{route('/enregistrement/ajouterDesBagages',[$key->num_client,$key->nom_client,$key->prenom_client])}}" class="tableau__button">Ajouter</a></div>
                     </div>
-@endif
+
                @endforeach
                
                     <div class="enregistrement__btns">
-                      <a href={{route('/enregistrement/information')}}>  <input type="button" class="" value="Retour"> </a>
+                      {{-- <a href={{route('/enregistrement/information')}}>  <input type="button" class="" value="Retour"> </a> --}}
                      
                     
                    
-                   @if(array_intersect ( $client_exist, $bagage_exist )== $client_exist )
+                  
 
-                      <a href={{route('/enregistrement/siège')}}>  <input type="button" class="" value="Suivant"> </a>
-                @endif
+                      <a href={{route('/enregistrement/informations/bagage/siège')}}>  <input type="button" class="" value="Suivant"> </a>
+                
                
                     </div>
 

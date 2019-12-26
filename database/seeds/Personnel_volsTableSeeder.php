@@ -17,7 +17,11 @@ class Personnel_volsTableSeeder extends Seeder
             'id_personnel'=>1,
             'id_vol'=>3,
             ]);
-
+            DB::table('Personnel_vols')->insert([
+    
+                'id_personnel'=>1,
+                'id_vol'=>2,
+                ]);
 
 
 

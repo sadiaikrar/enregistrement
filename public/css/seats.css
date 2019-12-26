@@ -1,0 +1,91 @@
+.seats_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.seats__passengers{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+        }
+
+.seats__passenger{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 0px 30px;
+    
+    
+}
+.passenger__logo:hover,.passenger__logo--selected{
+    transform: scale(1.1);
+}
+.passenger__logo--selected{
+    filter: invert(62%) sepia(27%) saturate(1083%) hue-rotate(143deg) brightness(93%) contrast(91%);
+}
+
+.passenger__logo{
+    width: 80px;
+    height: 80px;
+    transition: transform .2s;
+}
+.passenger__num{
+    font-weight: bold;
+}
+.airplane_seats__class{
+    font-size: 22px;
+}
+.airplane_seats{
+    padding: 5px 7px;
+    border:1px solid grey;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+.airplane_seats__row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+.airplane_seats__row_number{
+     position: absolute;
+     left:-20px;
+}
+.airplane_seats__section{
+    display: flex;
+    flex-direction: row;
+}
+
+.airplane_seats__seat{
+    width:50px;
+    height: 50px;
+    background-image: url('../images/economy.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    margin: 3px;
+    transition: transform .2s;
+}
+.airplane_seats__seat:hover{
+    transform: scale(1.05);
+}
+
+.seat--selected{
+    background-image: url('../images/economy_selected.png');
+    font-weight: bolder;
+}
+.seat--busy{
+    background-image: url('../images/economy_busy.png');
+}
+.airplane_seats__space{
+    width: 20px;
+}

@@ -18,7 +18,7 @@ class CreateAvionsTable extends Migration
             $table->string('num_avion');
             $table->string('nom_avion');
             $table->integer('capacite_avion');
-            $table->integer('nb_bagage_max'); 
+            // $table->integer('nb_bagage_max'); 
         });
     }
 

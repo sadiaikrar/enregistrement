@@ -12,7 +12,7 @@ class TerminalsTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        for ($i=1; $i <=3 ; $i++) 
+        for ($i=1; $i <=4 ; $i++) 
         {
         DB::table('Terminals')->insert([
             "id" =>$i ,

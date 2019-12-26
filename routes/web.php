@@ -51,20 +51,44 @@ Route::get('/enregistrement/informations/bagage',
 'as'=>'/enregistrement/informations/bagage',
 'uses' => 'BagageController@afficherBagage',
 ]);
-Route::post('/enregistrement/informations/bagage','BagageController@storeBagage',);
+Route::post('/enregistrement/informations/bagage','BagageController@storeBagage');
 Route::get('/enregistrement/ajouterDesBagages/{num_client},{nom_client},{prenom_client}',
 [
 'as'=>'/enregistrement/ajouterDesBagages',
 'uses' => 'AjouterBagageController@ajouterBagage',
 ]);
 
-Route::get('/enregistrement/siège',
+Route::get('/enregistrement/informations/bagage/siège',
 [
-'as'=>'/enregistrement/siège',
+'as'=>'/enregistrement/informations/bagage/siège',
 'uses' => 'SiègeController@afficherSiège',
 ]);
-Route::get('/enregistrement/carte_embarquement', 'paiementController@payer');
+
+Route::post('/enregistrement/informations/bagage/siège','SiègeController@storeSiège');
+
 Route::get('/enregistrement/macarte', 'paiementController@carte');
 
+Route::get('/enregistrement/carte_embarquement/{num_client},{nom_client},{prenom_client}',
+[
+    'as'=>'/enregistrement/carte_embarquement',
+    'uses' => 'MacarteController@Imprimer',
+    ]);
+//  Route::get('/enregistrement/carte_embarquement/{num_client},{nom_client},{prenom_client}', function () {
+//         $vol =session()->get('vol');
+//         $reservation = session()->get('reservation');
+       
+//       // return view('enregistrement.testpdf');
+//     $pdf = PDF::loadView('/enregistrement/testpdf',['vol'=>$vol,'reservation'=>$reservation ]);
+//       return $pdf->stream('Carte d embarquement.pdf');
+//     });
+Route::get('/enregistrement/supprimer_Enregistrement',
+[
+    'as'=>'/enregistrement/supprimer_Enregistrement',
+    'uses' => 'supprimerEnregController@PageSupprimer',
+    ]);
 
-
+Route::post('/enregistrement/supprimer_Enregistrement',
+    [
+        'as'=>'/enregistrement/supprimer_Enregistrement',
+        'uses' => 'supprimerEnregController@Supprimer',
+        ]);    
